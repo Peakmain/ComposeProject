@@ -8,10 +8,15 @@ package com.peakmain.compose.project.ui.view.main
  */
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.Color
+import com.peakmain.compose.library.TopAppBarCenter
 
 @Composable
 fun HomeFragment() {
-    Text(text = "首页")
+    TopAppBarCenter(title = {
+        Text(text = "首页", color = Color.White)
+    }) {
+        Text(text = "我是首页")
+    }
 }
 
