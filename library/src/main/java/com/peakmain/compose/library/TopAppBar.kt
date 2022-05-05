@@ -93,9 +93,10 @@ fun TopAppBarCenter(
         ConstraintLayout(constraintSet, modifier = Modifier
             .fillMaxWidth()
             .background(backgroundColor)
+            .then(modifier)
             .height(topAppBarHeight + statusBarHeightDp)
             .padding(top = statusBarHeightDp)
-            .then(modifier)) {
+            ) {
             Box(
                 Modifier
                     .layoutId("title")
