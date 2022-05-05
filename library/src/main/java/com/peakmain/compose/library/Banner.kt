@@ -47,7 +47,7 @@ import java.util.*
 @Composable
 fun <T>Banner(
     data: List<T>,
-    onImagePath:(Int)->Unit,
+    onImagePath:(Int)->String,
     pagerModifier: Modifier = Modifier,
     ratio: Float = 7 / 3f,
     contentScale: ContentScale = ContentScale.Crop,
