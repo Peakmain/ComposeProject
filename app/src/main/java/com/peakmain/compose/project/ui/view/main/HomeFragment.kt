@@ -49,7 +49,7 @@ fun HomeFragment(viewModel: HomeFragmentViewModel = viewModel()) {
                 Text(text = viewModel.bannerData[it].desc, color = Color.White)
             }
 
-            Text(text = "我是首页")
+            Text(text = "我是首页",modifier=Modifier.padding(top=10.dp))
         }
     }
 }

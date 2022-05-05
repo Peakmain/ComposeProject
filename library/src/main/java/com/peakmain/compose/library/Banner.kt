@@ -122,7 +122,7 @@ fun Banner(
                         pagerState = pageState,
                         activeColor = activeColor,
                         inactiveColor = inactiveColor,
-                        initialIndex = initialIndex
+                        count =actualCount
                     )
                 }
 

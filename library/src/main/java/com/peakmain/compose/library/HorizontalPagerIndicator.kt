@@ -30,7 +30,7 @@ import com.peakmain.compose.extends.floorMod
 @Composable
 fun HorizontalPagerIndicator(
     pagerState: PagerState,
-    initialIndex:Int,
+    count:Int,
     modifier: Modifier = Modifier,
     activeColor: Color = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
     inactiveColor: Color = activeColor.copy(ContentAlpha.disabled),
@@ -55,7 +55,7 @@ fun HorizontalPagerIndicator(
                 .size(width = indicatorWidth, height = indicatorHeight)
                 .background(color = inactiveColor, shape = indicatorShape)
 
-            repeat(4) {
+            repeat(count) {
                 Box(indicatorModifier)
             }
         }
@@ -63,8 +63,8 @@ fun HorizontalPagerIndicator(
         Box(
             Modifier
                 .offset {
-                    val scrollPosition = ((pagerState.currentPage-initialIndex).floorMod(4)+ pagerState.currentPageOffset)
-                        .coerceIn(0f, (4 - 1).coerceAtLeast(0).toFloat())
+                    val scrollPosition = ((pagerState.currentPage-Int.MAX_VALUE/2).floorMod(count)+ pagerState.currentPageOffset)
+                        .coerceIn(0f, (count - 1).coerceAtLeast(0).toFloat())
                     IntOffset(
                         x = ((spacingPx + indicatorWidthPx) * scrollPosition).toInt(),
                         y = 0

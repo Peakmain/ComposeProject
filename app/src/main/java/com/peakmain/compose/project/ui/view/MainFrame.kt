@@ -6,6 +6,7 @@ package com.peakmain.compose.project.ui.view
  * mail:2726449200@qq.com
  * describe：
  */
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -22,6 +23,7 @@ import com.peakmain.compose.project.ui.view.main.MineFragment
 import com.peakmain.compose.project.ui.view.main.ProjectFragment
 import com.peakmain.compose.project.ui.view.main.TypeFragment
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MainFrame() {
     val navigationItems = listOf(
