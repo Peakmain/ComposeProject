@@ -3,7 +3,7 @@ package com.peakmain.compose.project.viewmodel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.peakmain.compose.bean.BannerBean
+import com.peakmain.compose.project.bean.home.BannerBean
 
 /**
  * author ：Peakmain

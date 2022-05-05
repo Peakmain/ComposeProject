@@ -6,6 +6,8 @@ package com.peakmain.compose.project.ui.view.main
  * mail:2726449200@qq.com
  * describe：
  */
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -36,20 +38,28 @@ fun HomeFragment(viewModel: HomeFragmentViewModel = viewModel()) {
 
         Column {
             Banner(
-                data = viewModel.bannerData,
+                data = viewModel.bannerData,//设置数据
+                onImagePath = {//设置图片的url地址
+                    viewModel.bannerData[it].imagePath
+                },
                 pagerModifier = Modifier
                     .padding(horizontal = 16.dp)
                     .padding(top = 10.dp)
-                    .clip(RoundedCornerShape(8.dp)),
+                    .clip(RoundedCornerShape(8.dp)),//HorizontalPager的modifier
                 pagerIndicatorModifier = Modifier
                     .background(Color(0x90000000))
                     .padding(horizontal = 10.dp)
-                    .padding(top = 10.dp, bottom = 10.dp),
+                    .padding(top = 10.dp, bottom = 10.dp),//指示器Row的整个样式
+                desc = {
+                    //指示器文本内容，也就是标题一、标题二
+                    Text(text = viewModel.bannerData[it].desc, color = Color.White)
+                }
             ) {
-                Text(text = viewModel.bannerData[it].desc, color = Color.White)
+                //设置item的点击事件
+                Log.e("TAG", viewModel.bannerData[it].imagePath)
             }
 
-            Text(text = "我是首页",modifier=Modifier.padding(top=10.dp))
+            Text(text = "我是首页", modifier = Modifier.padding(top = 10.dp))
         }
     }
 }

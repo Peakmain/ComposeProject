@@ -6,6 +6,7 @@ package com.peakmain.compose.library
  * mail:2726449200@qq.com
  * describe：轮播图封装
  */
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -21,13 +22,13 @@ import coil.compose.AsyncImage
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
-import com.peakmain.compose.bean.BannerBean
 import com.peakmain.compose.extends.floorMod
 import kotlinx.coroutines.launch
 import java.util.*
 
 /**
  * @param data 数据来源
+ * @param onImagePath 设置图片的url
  * @param pagerModifier HorizontalPager的Modifier
  * @param ratio 图片宽高压缩比
  * @param contentScale 图片裁剪方式
@@ -40,11 +41,13 @@ import java.util.*
  * @param loopPeriod 连续任务执行之间的时间（毫秒）。
  * @param horizontalArrangement 指示器Row中文本和指示器的排版样式
  * @param desc 文本内容
+ * @param onBannerItemClick Banner的item点击事件
  */
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun Banner(
-    data: List<BannerBean>,
+fun <T>Banner(
+    data: List<T>,
+    onImagePath:(Int)->Unit,
     pagerModifier: Modifier = Modifier,
     ratio: Float = 7 / 3f,
     contentScale: ContentScale = ContentScale.Crop,
@@ -57,6 +60,7 @@ fun Banner(
     loopPeriod: Long = 3000,
     horizontalArrangement: Arrangement.Horizontal = Arrangement.SpaceBetween,
     desc: @Composable (Int) -> Unit,
+    onBannerItemClick: ((Int) -> Unit)? = null,
 ) {
     val virtualCount = Int.MAX_VALUE
 
@@ -102,11 +106,14 @@ fun Banner(
         val actualIndex = (index - initialIndex).floorMod(actualCount)
         ConstraintLayout(constraintSet = constraintSet) {
             AsyncImage(
-                model = data[actualIndex].imagePath,
+                model = onImagePath(actualIndex),
                 contentDescription = null,
                 modifier = Modifier
                     .layoutId("image")
-                    .aspectRatio(ratio),
+                    .aspectRatio(ratio)
+                    .clickable {
+                        onBannerItemClick?.invoke(actualIndex)
+                    },
                 contentScale = contentScale,
             )
             if (isShowPagerIndicator) {
@@ -122,7 +129,7 @@ fun Banner(
                         pagerState = pageState,
                         activeColor = activeColor,
                         inactiveColor = inactiveColor,
-                        count =actualCount
+                        count = actualCount
                     )
                 }
 

@@ -1,4 +1,4 @@
-package com.peakmain.compose.bean
+package com.peakmain.compose.project.bean.home
 
 /**
  * author ：Peakmain
