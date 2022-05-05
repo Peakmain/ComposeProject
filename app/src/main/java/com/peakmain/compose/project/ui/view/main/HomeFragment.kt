@@ -15,7 +15,7 @@ import com.peakmain.compose.library.TopAppBarCenter
 fun HomeFragment() {
     TopAppBarCenter(title = {
         Text(text = "首页", color = Color.White)
-    }) {
+    }, isImmersive = true) {
         Text(text = "我是首页")
     }
 }

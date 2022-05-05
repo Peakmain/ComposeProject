@@ -6,10 +6,12 @@ package com.peakmain.compose.project.ui.view
  * mail:2726449200@qq.com
  * describe：
  */
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.peakmain.compose.project.bean.main.NavigationItem
@@ -33,7 +35,8 @@ fun MainFrame() {
     }
     Scaffold(
         bottomBar = {
-            BottomNavigation(backgroundColor = MaterialTheme.colors.surface) {
+            BottomNavigation(backgroundColor = MaterialTheme.colors.surface
+                , modifier = Modifier.navigationBarsPadding()) {
                 navigationItems.forEachIndexed { index, navigationItem ->
                     BottomNavigationItem(
                         selected = currentNavigationIndex == index,
