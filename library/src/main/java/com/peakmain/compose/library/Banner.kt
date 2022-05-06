@@ -45,9 +45,9 @@ import java.util.*
  */
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun <T>Banner(
+fun <T> Banner(
     data: List<T>,
-    onImagePath:(Int)->String,
+    onImagePath: (Int) -> String,
     pagerModifier: Modifier = Modifier,
     ratio: Float = 7 / 3f,
     contentScale: ContentScale = ContentScale.Crop,
@@ -59,7 +59,7 @@ fun <T>Banner(
     loopDelay: Long = 3000,
     loopPeriod: Long = 3000,
     horizontalArrangement: Arrangement.Horizontal = Arrangement.SpaceBetween,
-    desc: @Composable (Int) -> Unit,
+    desc: @Composable ((Int) -> Unit)? = null,
     onBannerItemClick: ((Int) -> Unit)? = null,
 ) {
     val virtualCount = Int.MAX_VALUE
@@ -124,7 +124,7 @@ fun <T>Banner(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = horizontalArrangement
                 ) {
-                    desc(actualIndex)
+                    desc?.invoke(actualIndex)
                     HorizontalPagerIndicator(
                         pagerState = pageState,
                         activeColor = activeColor,
