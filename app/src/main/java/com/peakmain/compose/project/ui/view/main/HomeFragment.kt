@@ -7,7 +7,6 @@ package com.peakmain.compose.project.ui.view.main
  * describe：
  */
 import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -25,7 +24,7 @@ import com.peakmain.compose.library.Banner
 import com.peakmain.compose.library.TopAppBarCenter
 import com.peakmain.compose.project.ui.theme.Color_149EE7
 import com.peakmain.compose.project.ui.theme.Color_2DCDF5
-import com.peakmain.compose.project.viewmodel.HomeFragmentViewModel
+import com.peakmain.compose.project.viewmodel.home.HomeFragmentViewModel
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable

@@ -6,85 +6,88 @@ package com.peakmain.compose.project.ui.view.main
  * mail:2726449200@qq.com
  * describe：我的
  */
-import android.content.Context
 import android.util.Log
-import android.widget.Toast
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.FontDownload
-import androidx.compose.material.icons.filled.More
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.peakmain.compose.library.Banner
-import com.peakmain.compose.library.TopAppBarCenter
+import androidx.compose.ui.unit.sp
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.peakmain.compose.project.R
 import com.peakmain.compose.project.ui.theme.Color_149EE7
 import com.peakmain.compose.project.ui.theme.Color_2DCDF5
-import com.peakmain.compose.project.ui.theme.Color_999999
-import com.peakmain.compose.project.viewmodel.HomeFragmentViewModel
+import com.peakmain.compose.project.viewmodel.mine.MineFragmentViewModel
+import  androidx.lifecycle.viewmodel.compose.viewModel;
+import com.peakmain.compose.project.ui.item.MineItemCell
 
 @Composable
-fun MineFragment(viewModel: HomeFragmentViewModel = viewModel()) {
-    val context: Context
+fun MineFragment(viewModel: MineFragmentViewModel = viewModel()) {
+    var statusBarHeight = 0
+    var statusBarHeightDp: Dp
+    val headHeight = 200.dp
     with(LocalContext.current) {
-        context = this
+        statusBarHeight =
+            resources.getDimensionPixelSize(resources.getIdentifier("status_bar_height",
+                "dimen",
+                "android"))
     }
-    TopAppBarCenter(
-        title = {
-            Text(text = "我的", color = Color.White)
-        },
-        isImmersive = true,
-        navigationIcon = {
-            Icon(imageVector = Icons.Default.ArrowBack,
+    with(LocalDensity.current) {
+        statusBarHeightDp = statusBarHeight.toDp()
+    }
+    val systemUiController = rememberSystemUiController()
+    SideEffect {
+        systemUiController.setStatusBarColor(Color.Transparent)
+    }
+    Column(modifier = Modifier
+        .background(Color(0x66999999))
+        .fillMaxSize()) {
+        Column(modifier = Modifier
+            .fillMaxWidth()
+            .height(headHeight + statusBarHeightDp)
+            .background(Brush.linearGradient(listOf(Color_149EE7, Color_2DCDF5))),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center) {
+            Image(painter = painterResource(id = R.drawable.portrair),
                 contentDescription = null,
-                modifier = Modifier.clickable {
-                    Toast.makeText(context, "点击了返回", Toast.LENGTH_LONG).show()
-                }, tint = Color.White)
-        },
-        actions = {
-            Icon(imageVector = Icons.Default.FontDownload,
-                contentDescription = null,
-                tint = Color.White)
-        },
-        modifier = Modifier.background(Brush.linearGradient(listOf(Color_149EE7, Color_2DCDF5)))
-    ) {
-        Banner(
-            data = viewModel.bannerData,//设置数据
-            onImagePath = {//设置图片的url地址
-                viewModel.bannerData[it].imagePath
-            },
-            isShowPagerIndicator = true,
-            pagerIndicatorModifier = Modifier
-                .background(Color(0x90000000))
-                .padding(horizontal = 10.dp)
-                .padding(top = 10.dp, bottom = 10.dp),//指示器Row的整个样式,
-            activeColor = Color.Red,
-            inactiveColor = Color.Yellow,
-            isLoopBanner = false,
-            pagerModifier = Modifier
-                .padding(horizontal = 10.dp)
-                .clip(RoundedCornerShape(18.dp)),
-            desc = {
-                Text(text = "desc",color=Color.White)
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(62.dp)
+                    .clip(
+                        CircleShape))
+            Text(text = "peakmain",
+                fontSize = 18.sp,
+                color = Color.White,
+                modifier = Modifier.padding(top = 10.dp))
+        }
+        Column() {
+            viewModel.mineItemBeans.forEachIndexed { index, it ->
+                MineItemCell(
+                    index,
+                    mineItemBean = it,
+                    viewModel.mineItemBeans.size,
+                    modifier=Modifier.clickable {
+                        //点击事件
+                        Log.e("TAG","点击事件")
+                    }
+                )
             }
-        ) {
-            //设置item的点击事件
-            Log.e("TAG", viewModel.bannerData[it].imagePath)
+
         }
     }
-
 }
 

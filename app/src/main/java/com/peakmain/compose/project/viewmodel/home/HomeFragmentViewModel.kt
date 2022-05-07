@@ -1,4 +1,4 @@
-package com.peakmain.compose.project.viewmodel
+package com.peakmain.compose.project.viewmodel.home
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
