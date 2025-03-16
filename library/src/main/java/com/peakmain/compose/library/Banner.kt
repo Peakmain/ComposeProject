@@ -22,7 +22,7 @@ import coil.compose.AsyncImage
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
-import com.peakmain.compose.extends.floorMod
+import com.peakmain.compose.ext.floorMod
 import kotlinx.coroutines.launch
 import java.util.*
 

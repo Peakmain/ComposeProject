@@ -6,9 +6,6 @@ package com.peakmain.compose.common
  * mail:2726449200@qq.com
  * describe：单元格
  */
-import android.util.Log
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
@@ -17,8 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import com.peakmain.compose.bean.IconBean
 import com.peakmain.compose.bean.TextBean
-import com.peakmain.compose.custom.icon.ComposableIcon
-import com.peakmain.compose.custom.text.ComposableText
+import com.peakmain.compose.ui.icon.ComposableIcon
+import com.peakmain.compose.ui.text.ComposableText
 
 @Composable
 fun ItemCell(

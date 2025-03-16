@@ -1,4 +1,4 @@
-package com.peakmain.compose.custom
+package com.peakmain.compose.ui
 
 import androidx.annotation.IntRange
 import androidx.compose.foundation.layout.Box

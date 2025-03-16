@@ -1,4 +1,4 @@
-package com.peakmain.compose.custom.icon
+package com.peakmain.compose.ui.icon
 
 /**
  * author ：Peakmain

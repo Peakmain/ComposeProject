@@ -1,6 +1,5 @@
 package com.peakmain.compose.library
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -18,7 +17,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
-import com.peakmain.compose.extends.floorMod
+import com.peakmain.compose.ext.floorMod
 
 /**
  * author ：Peakmain

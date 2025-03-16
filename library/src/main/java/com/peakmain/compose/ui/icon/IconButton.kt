@@ -1,4 +1,4 @@
-package com.peakmain.compose.custom.icon
+package com.peakmain.compose.ui.icon
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource

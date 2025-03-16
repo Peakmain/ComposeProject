@@ -1,13 +1,9 @@
-package com.peakmain.compose.custom.text
+package com.peakmain.compose.ui.text
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import com.peakmain.compose.bean.TextBean
 
 /**

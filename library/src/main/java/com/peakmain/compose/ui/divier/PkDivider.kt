@@ -1,4 +1,4 @@
-package com.peakmain.compose.custom.divier
+package com.peakmain.compose.ui.divier
 
 /**
  * author ：Peakmain
