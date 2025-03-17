@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
  *
  * @param modifier 用于添加额外修饰符的 Modifier。
  * @param color 分隔线的颜色，默认为 0xFFF1EFE9。
- * @param height 分隔线的高度，仅在垂直分隔线且非虚线时生效，默认为 28.dp。
+ * @param height 分隔线的高度，仅在垂直分隔线时生效，默认为 28.dp。
  * @param thickness 分隔线的厚度，仅在非虚线时生效，默认为 1.dp。
  * @param startIndent 分隔线的起始缩进，仅在非虚线时生效，默认为 0.dp。
  * @param isHorizontal 是否为水平分隔线，默认为 false。
@@ -44,6 +44,7 @@ fun PkDivider(
         PkDashDivider(
             modifier = modifier,
             color = color,
+            height=height,
             strokeWidth = strokeWidth,
             dashLength = dashLength,
             gapLength = gapLength,

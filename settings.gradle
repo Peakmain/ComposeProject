@@ -6,6 +6,6 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "ComposeProject"
+rootProject.name = "ComposeUI"
 include ':app'
 include ':library'

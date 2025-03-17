@@ -6,7 +6,6 @@ package com.peakmain.compose.ui.divier
  * mail:2726449200@qq.com
  * describe：
  */
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -25,6 +24,7 @@ import androidx.compose.ui.unit.dp
  *
  * @param modifier 用于添加额外修饰符的 Modifier。
  * @param color 虚线的颜色，默认为 0x67272A2B。
+ * @param height 分割线的高度,垂直方向生效
  * @param strokeWidth 虚线的宽度，默认为 0.5.dp。
  * @param dashLength 虚线的长度，默认为 2.dp。
  * @param gapLength 虚线之间的间隔长度，默认为 2.dp。
@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 fun PkDashDivider(
     modifier: Modifier = Modifier,
     color: Color = Color(0x67272A2B),
+    height:Dp=28.dp,
     strokeWidth: Dp = 0.5.dp,
     dashLength: Dp = 2.dp,
     gapLength: Dp = 2.dp,
@@ -42,7 +43,7 @@ fun PkDashDivider(
     val newModifier = if (isHorizontal) modifier
         .fillMaxWidth()
         .height(strokeWidth) else modifier
-        .fillMaxHeight()
+        .height(height)
         .width(strokeWidth)
     androidx.compose.foundation.Canvas(
         newModifier

@@ -22,7 +22,6 @@ class MainActivity : ComponentActivity() {
             ComposeProjectTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Divider()
                     MainFrame()
                 }
             }
