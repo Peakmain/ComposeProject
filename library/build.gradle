@@ -9,8 +9,6 @@ android {
     defaultConfig {
         minSdk 21
         targetSdk 31
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -32,15 +30,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.peakmain.compose.library'
 }
 
 dependencies {
-    api "androidx.compose.ui:ui:1.2.1"
-    api "androidx.compose.foundation:foundation:1.2.1"
-    api "androidx.compose.material:material:1.2.1"
-    api "androidx.compose.material:material-icons-core:1.2.1"
-    api "androidx.compose.material:material-icons-extended:1.2.1"
-    api "androidx.compose.ui:ui-tooling:1.2.1"
+    api platform('androidx.compose:compose-bom:2023.08.00')
+
+    // 按需引入组件（无需指定版本）
+    api 'androidx.compose.ui:ui'
+    api 'androidx.compose.material3:material3'
+    api 'androidx.compose.foundation:foundation'
+    api "androidx.compose.ui:ui-tooling:1.4.3"
     api "androidx.constraintlayout:constraintlayout-compose:1.0.0"
     api "io.coil-kt:coil-compose:2.4.0"
 
