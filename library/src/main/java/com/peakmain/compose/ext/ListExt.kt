@@ -37,5 +37,5 @@ fun <T> List<T>?.sizeEqualZero(): Boolean {
  * 返回此列表中指定[fromIndex]（包含）和[toIndex]（不包含）之间部分的视图
  */
 fun <T> List<T>?.slice(fromIndex: Int, toIndex: Int): List<T>? {
-    return if (this.orSize() > 3) this?.subList(fromIndex, toIndex) else this
+    return if (this.orSize() > (toIndex-fromIndex)) this?.subList(fromIndex, toIndex) else this
 }
