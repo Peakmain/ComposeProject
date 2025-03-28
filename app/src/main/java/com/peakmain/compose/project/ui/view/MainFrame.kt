@@ -28,8 +28,8 @@ import com.peakmain.compose.project.ui.view.main.TypeFragment
 fun MainFrame() {
     val navigationItems = listOf(
         NavigationItem("首页", Icons.Default.Home),
-        NavigationItem("项目", Icons.Default.Article),
-        NavigationItem("分类", Icons.Default.Category),
+        NavigationItem("项目", Icons.Default.AccountCircle),
+        NavigationItem("分类", Icons.Default.LocationOn),
         NavigationItem("我的", Icons.Default.Person)
     )
     var currentNavigationIndex by remember {
