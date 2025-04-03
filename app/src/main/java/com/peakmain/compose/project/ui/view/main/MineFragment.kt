@@ -33,7 +33,6 @@ import com.peakmain.compose.project.ui.theme.Color_149EE7
 import com.peakmain.compose.project.ui.theme.Color_2DCDF5
 import com.peakmain.compose.project.viewmodel.mine.MineFragmentViewModel
 import  androidx.lifecycle.viewmodel.compose.viewModel;
-import com.peakmain.compose.project.ui.item.MineItemCell
 
 @Composable
 fun MineFragment(viewModel: MineFragmentViewModel = viewModel()) {
@@ -76,15 +75,6 @@ fun MineFragment(viewModel: MineFragmentViewModel = viewModel()) {
         }
         Column() {
             viewModel.mineItemBeans.forEachIndexed { index, it ->
-                MineItemCell(
-                    index,
-                    mineItemBean = it,
-                    viewModel.mineItemBeans.size,
-                    modifier=Modifier.clickable {
-                        //点击事件
-                        Log.e("TAG","点击事件")
-                    }
-                )
             }
 
         }

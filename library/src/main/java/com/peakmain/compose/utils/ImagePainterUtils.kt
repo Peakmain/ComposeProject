@@ -26,7 +26,7 @@ object ImagePainterUtils {
      */
     @Composable
     fun getPainter(
-        imageUrl: String,
+        imageUrl: String?,
         @DrawableRes errorDrawableResId: Int = R.drawable.icon_loading,
         @DrawableRes placeDrawableResId: Int = R.drawable.icon_loading,
     ): AsyncImagePainter {

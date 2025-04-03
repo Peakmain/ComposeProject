@@ -20,17 +20,15 @@ import androidx.compose.ui.unit.dp
  * @param columns 1行几个
  * @param data 源数据
  * @param isShowHorizontalDivider 是否显示水平分割线，默认不显示
- * @param propagateMinConstraints 以Text为例false则居左，true则表示居中
  * @param content The content of the GridLayout
  */
 @Composable
 fun <E> GridLayout(
     @IntRange(from = 1) columns: Int,
     data: MutableList<E>,
-    propagateMinConstraints: Boolean = false,
     isShowHorizontalDivider: Boolean = false,
     divider: @Composable (() -> Unit)? = null,
-    content: @Composable (Int) -> Unit,
+    content: @Composable (Int, E) -> Unit,
 ) {
     val size = data.size
     val rows = (size + columns - 1) / columns
@@ -40,13 +38,9 @@ fun <E> GridLayout(
                 for (columnIndex in 0 until columns) {
                     val itemIndex = rowIndex * columns + columnIndex
                     if (itemIndex < size) {
-                        Box(
-                            Modifier.weight(1f),
-                            propagateMinConstraints = propagateMinConstraints
-                        ) {
-                              content(itemIndex)
+                        Box(Modifier.weight(1f)) {
+                            content(itemIndex, data[itemIndex])
                         }
-
                     } else {
                         Spacer(
                             Modifier

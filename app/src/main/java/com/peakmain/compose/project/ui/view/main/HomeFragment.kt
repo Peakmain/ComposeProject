@@ -8,6 +8,7 @@ package com.peakmain.compose.project.ui.view.main
  */
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
@@ -31,9 +32,12 @@ import com.peakmain.compose.library.TopAppBarCenter
 import com.peakmain.compose.project.ui.theme.Color_149EE7
 import com.peakmain.compose.project.ui.theme.Color_2DCDF5
 import com.peakmain.compose.project.viewmodel.home.HomeFragmentViewModel
+import com.peakmain.compose.ui.GridLayout
 import com.peakmain.compose.ui.divier.PkDashDivider
 import com.peakmain.compose.ui.divier.PkDivider
 import com.peakmain.compose.ui.divier.PkFullDivider
+import com.peakmain.compose.ui.title.PkTitle
+import com.peakmain.compose.ui.title.PkTitleType
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
@@ -48,7 +52,6 @@ fun HomeFragment(viewModel: HomeFragmentViewModel = viewModel()) {
 
         Column(
             modifier = Modifier
-                .background(Color.Red)
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -64,6 +67,14 @@ fun HomeFragment(viewModel: HomeFragmentViewModel = viewModel()) {
             //水平虚线
             PkDashDivider(modifier = Modifier.padding(top = 10.dp), isHorizontal = true)
             arrayListOf<String>().orSize()
+             GridLayout(
+                 2,
+                 data = arrayListOf("111","222","333","444","555"),
+             ) { index,item->
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+                    Text(item, modifier = Modifier.padding(10.dp))
+                }
+             }
         }
     }
 }
