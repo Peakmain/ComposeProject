@@ -4,6 +4,7 @@ import android.graphics.Color.luminance
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
@@ -47,9 +48,7 @@ fun TopAppBarCenter(
     darkIcons: Boolean = false,
     content: @Composable (PaddingValues) -> Unit,
 ) {
-    val topAppBarHeight = 56.dp
-    var statusBarHeight = 0
-    var statusBarHeightDp = Dp(0f)
+    val topAppBarHeight = 44.dp
     if (isImmersive) {
         val systemUiController = rememberSystemUiController()
         SideEffect {
@@ -57,15 +56,6 @@ fun TopAppBarCenter(
                 color = Color.Transparent,
                 darkIcons = darkIcons
             )
-        }
-        with(LocalContext.current) {
-            statusBarHeight =
-                resources.getDimensionPixelSize(resources.getIdentifier("status_bar_height",
-                    "dimen",
-                    "android"))
-        }
-        with(LocalDensity.current) {
-            statusBarHeightDp = statusBarHeight.toDp()
         }
     }
 
@@ -93,9 +83,8 @@ fun TopAppBarCenter(
         ConstraintLayout(constraintSet, modifier = Modifier
             .fillMaxWidth()
             .background(backgroundColor)
-            .then(modifier)
-            .height(topAppBarHeight + statusBarHeightDp)
-            .padding(top = statusBarHeightDp)
+            .then(modifier.statusBarsPadding())
+            .height(topAppBarHeight)
             ) {
             Box(
                 Modifier
@@ -125,7 +114,6 @@ fun TopAppBarCenter(
                     .padding(end = 4.dp),
                 content = actions
             )
-
         }
     }) {
         content(it)

@@ -36,13 +36,13 @@ import com.peakmain.compose.ui.GridLayout
 import com.peakmain.compose.ui.divier.PkDashDivider
 import com.peakmain.compose.ui.divier.PkDivider
 import com.peakmain.compose.ui.divier.PkFullDivider
+import com.peakmain.compose.ui.flow.PkFlowRow
 import com.peakmain.compose.ui.title.PkTitle
 import com.peakmain.compose.ui.title.PkTitleType
 
-@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun HomeFragment(viewModel: HomeFragmentViewModel = viewModel()) {
-    TopAppBarCenter(
+    TopAppBarCenter (
         title = {
             Text(text = "首页", color = Color.White)
         },
@@ -67,14 +67,26 @@ fun HomeFragment(viewModel: HomeFragmentViewModel = viewModel()) {
             //水平虚线
             PkDashDivider(modifier = Modifier.padding(top = 10.dp), isHorizontal = true)
             arrayListOf<String>().orSize()
-             GridLayout(
-                 2,
-                 data = arrayListOf("111","222","333","444","555"),
-             ) { index,item->
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                    Text(item, modifier = Modifier.padding(10.dp))
+            val tags =
+                listOf("Android", "Kotlin", "Jetpack Compose", "Material Design", "UI", "Development","KMP")
+
+            PkFlowRow(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                horizontalSpacing = 8.dp,
+                verticalSpacing = 12.dp,
+                maxLine = 1
+            ) {
+                tags.forEach { tag ->
+                    Text(
+                        text = tag,
+                        modifier = Modifier
+                            .background(Color.LightGray, RoundedCornerShape(16.dp))
+                            .padding(horizontal = 12.dp, vertical = 8.dp)
+                    )
                 }
-             }
+            }
         }
     }
 }

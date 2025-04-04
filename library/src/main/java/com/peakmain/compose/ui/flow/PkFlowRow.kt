@@ -6,16 +6,20 @@ package com.peakmain.compose.ui.flow
  * mail:2726449200@qq.com
  * describe：限制行数的FlowRow
  */
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextOverflow
@@ -88,62 +92,19 @@ fun PkFlowRow(
 @Preview
 @Composable
 fun PkFlowRowPreview() {
-    val items = arrayOf(
-        "1111",
-        "2222",
-        "33333",
-        "4444",
-        "1",
-        "2",
-        "3",
-        "4",
-        "1",
-        "2",
-        "3",
-        "4",
-        "1111",
-        "2222",
-        "33333",
-        "4444",
-        "1",
-        "2",
-        "3",
-        "4",
-        "1",
-        "2",
-        "3",
-        "4",
-        "1111",
-        "2222",
-        "33333",
-        "4444",
-        "1",
-        "2",
-        "3",
-        "4",
-        "1",
-        "2",
-        "3",
-        "4",
-        "1111",
-        "2222",
-        "33333",
-        "4444",
-        "1",
-        "2",
-        "3",
-        "4",
-        "1",
-        "2",
-        "3",
-        "4"
-    )
-    PkFlowRow {
-        items.forEach { item ->
+    val tags = listOf("Android", "Kotlin", "Jetpack Compose", "KMP","Material Design", "UI", "Development")
+
+    PkFlowRow(
+        horizontalSpacing = 8.dp,
+        verticalSpacing = 12.dp,
+        maxLine = 2
+    ) {
+        tags.forEach { tag ->
             Text(
-                text = item,
-                modifier = Modifier.padding(4.dp),
-                overflow = TextOverflow.Ellipsis
+                text = tag,
+                modifier = Modifier
+                    .background(Color.LightGray, RoundedCornerShape(16.dp))
+                    .padding(horizontal = 12.dp, vertical = 8.dp)
             )
         }
     }
